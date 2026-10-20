@@ -404,38 +404,50 @@
 
             </div>
         </div>
-    </section>
-
-    <!-- Buzón de Propuestas (Conector de Correo y Forzado de Letra Oscura) -->
+   <!-- Buzón de Propuestas (Con mensaje de confirmación al regresar) -->
     <section id="contacto" class="py-16 px-4 max-w-4xl mx-auto">
         <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200 text-center">
             <span class="text-xs font-bold text-teal-700 uppercase tracking-widest bg-teal-50 px-3 py-1 rounded-full border border-teal-200">Construcción Colectiva</span>
             <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">¿Tienes alguna propuesta o inquietud?</h2>
             <p class="text-slate-600 text-xs md:text-sm mt-1 mb-6">Queremos construir las iniciativas del comité escuchándote directamente.</p>
 
-            <form action="https://formsubmit.co/ssanabriaro@unal.edu.co" method="POST" class="space-y-4 max-w-xl mx-auto text-left">
-    <!-- 1. Asunto del correo -->
-    <input type="hidden" name="_subject" value="¡Nueva propuesta desde la web de campaña IQ!">
-    
-    <!-- 2. DIRECCIÓN COMPLETA DE REGRESO (Soluciona el problema del enlace cortado) -->
-    <input type="hidden" name="_next" value="https://repiq-plancha1.github.io/Representacion-IQ/#contacto">
+            <!-- AVISO DE CONFIRMACIÓN (Aparece automáticamente cuando regresa de enviar el mensaje) -->
+            <div id="mensaje-exito" class="hidden mb-6 p-5 bg-teal-50 border border-teal-200 rounded-2xl text-teal-800 text-center">
+                <i class="fa-solid fa-circle-check text-3xl mb-2 text-teal-600 block"></i>
+                <h4 class="font-bold text-base">¡Propuesta enviada con éxito!</h4>
+                <p class="text-xs mt-1 text-teal-700">Muchas gracias por tu aporte. Tu mensaje ha sido enviado a los candidatos.</p>
+            </div>
 
-    <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Tu Nombre o Seudónimo (Opcional)</label>
-        <input type="text" name="Nombre" placeholder="Ej. Estudiante 4to semestre" required
-               class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-xs font-medium focus:outline-none focus:border-teal-600 transition">
-    </div>
-    <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Tu Comentario, Idea o Problemática</label>
-        <textarea name="Mensaje" rows="3" required placeholder="Escribe aquí qué problemática quisieras que llevemos al comité..." 
-                  class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-xs font-medium focus:outline-none focus:border-teal-600 transition"></textarea>
-    </div>
-    <button type="submit" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs py-3 rounded-xl shadow transition">
-        <i class="fa-solid fa-paper-plane mr-2"></i> Enviar a los Candidatos
-    </button>
-</form>
+            <!-- Cambia tu-correo@unal.edu.co por tu correo real -->
+            <form action="https://formsubmit.co/tu-correo@unal.edu.co" method="POST" class="space-y-4 max-w-xl mx-auto text-left">
+                <input type="hidden" name="_subject" value="¡Nueva propuesta desde la web de campaña IQ!">
+                
+                <!-- Recuerda reemplazar NOMBRE-DE-TU-REPOSITORIO por el nombre exacto de tu repo en GitHub -->
+                <input type="hidden" name="_next" value="https://repiq-plancha1.github.io/NOMBRE-DE-TU-REPOSITORIO/?enviado=true#contacto">
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Tu Nombre o Seudónimo (Opcional)</label>
+                    <input type="text" name="Nombre" placeholder="Ej. Estudiante 4to semestre" 
+                           class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-xs font-medium focus:outline-none focus:border-teal-600 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Tu Comentario, Idea o Problemática</label>
+                    <textarea name="Mensaje" rows="3" required placeholder="Escribe aquí qué problemática quisieras que llevemos al comité..." 
+                              class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-xs font-medium focus:outline-none focus:border-teal-600 transition"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs py-3 rounded-xl shadow transition">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Enviar a los Candidatos
+                </button>
+            </form>
         </div>
     </section>
+
+    <!-- Script detector para mostrar la confirmación -->
+    <script>
+        if (window.location.search.includes('enviado=true')) {
+            document.getElementById('mensaje-exito').classList.remove('hidden');
+        }
+    </script>
 
     <!-- Pie de página -->
     <footer class="bg-slate-950 text-slate-400 py-10 px-4 text-center border-t border-slate-800 text-xs">
