@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidatura Representación IQ - Santiago Sanabria & Emilio Vence</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Alpine.js para interactividad -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandPrimary: '#0f766e',
+                        brandAccent: '#0d9488',
+                        brandDark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FORZAR TEXTO OSCURO EN CASILLAS DE TEXTO (EVITA LETRA BLANCA EN CUALQUIER NAVEGADOR O MODO OSCURO) -->
+    <style>
+        input, textarea, select {
+            color: #0f172a !important;
+            -webkit-text-fill-color: #0f172a !important;
+            background-color: #ffffff !important;
+            caret-color: #0f172a !important;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #64748b !important;
+            -webkit-text-fill-color: #64748b !important;
+            opacity: 1 !important;
+        }
+        input:-webkit-autofill,
+        textarea:-webkit-autofill {
+            -webkit-text-fill-color: #0f172a !important;
+            -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased" x-data="{ mobileMenu: false, activeTab: 'todas' }">
+
+    <!-- Navegación -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-teal-700 flex items-center justify-center text-white font-black text-xl shadow-md">
+                    <i class="fa-solid fa-flask-vial"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg text-slate-900 tracking-tight block leading-none">Representación IQ & AMB</span>
+                    <span class="text-xs text-teal-700 font-semibold">Santiago & Emilio</span>
+                </div>
+            </div>
+
+            <!-- Menú Escritorio -->
+            <div class="hidden md:flex space-x-6 text-sm font-semibold text-slate-600">
+                <a href="#inicio" class="hover:text-teal-700 transition">Inicio</a>
+                <a href="#candidatos" class="hover:text-teal-700 transition">Candidatos</a>
+                <a href="#presentacion" class="hover:text-teal-700 transition">Presentación</a>
+                <a href="#propuestas" class="hover:text-teal-700 transition">Las 6 Propuestas</a>
+                <a href="#herramientas" class="hover:text-teal-700 transition">Herramientas</a>
+                <a href="#contacto" class="hover:text-teal-700 transition">Buzón</a>
+            </div>
+
+            <a href="#contacto" class="hidden md:inline-flex bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition">
+                <i class="fa-solid fa-paper-plane mr-2"></i> Envía tu Propuesta
+            </a>
+
+            <!-- Botón Móvil -->
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-slate-700 focus:outline-none p-2">
+                <i class="fa-solid" :class="mobileMenu ? 'fa-xmark text-xl' : 'fa-bars text-xl'"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div x-show="mobileMenu" class="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-3 font-semibold text-slate-700 text-sm">
+            <a @click="mobileMenu = false" href="#inicio" class="block py-2 border-b border-slate-100">Inicio</a>
+            <a @click="mobileMenu = false" href="#candidatos" class="block py-2 border-b border-slate-100">Candidatos</a>
+            <a @click="mobileMenu = false" href="#presentacion" class="block py-2 border-b border-slate-100">Presentación</a>
+            <a @click="mobileMenu = false" href="#propuestas" class="block py-2 border-b border-slate-100">Las 6 Propuestas</a>
+            <a @click="mobileMenu = false" href="#herramientas" class="block py-2 border-b border-slate-100">Herramientas Interactivas</a>
+            <a @click="mobileMenu = false" href="#contacto" class="block py-2 text-teal-700 font-bold">Buzón Estudiantil</a>
+        </div>
+    </nav>
+
+    <!-- Encabezado Principal (Hero) -->
+    <section id="inicio" class="relative bg-gradient-to-br from-slate-950 via-teal-950 to-slate-900 text-white py-20 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#14b8a6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 bg-teal-500/10 border border-teal-400/30 px-4 py-1.5 rounded-full text-teal-300 text-xs font-bold uppercase tracking-wider mb-6">
+                <i class="fa-solid fa-award"></i>
+                <span>Comité Asesor del Programa Curricular de Ingeniería Química y Ambiental</span>
+            </div>
+            
+            <h1 class="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-tight">
+                Programa de Trabajo y Propuestas de Candidatura
+            </h1>
+            
+            <p class="text-slate-300 text-base md:text-xl max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                Una representación abierta, permanente y en equipo para dar respuestas reales y oportunas a la comunidad estudiantil.
+            </p>
+
+            <!-- Botones con orden invertido según solicitud: Izquierda (Equipo), Derecha (Propuestas) -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#candidatos" class="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3.5 rounded-xl border border-white/20 transition text-sm">
+                    <i class="fa-solid fa-user-group mr-2"></i> Conoce al Equipo
+                </a>
+                <a href="#propuestas" class="bg-teal-600 hover:bg-teal-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 text-sm">
+                    <i class="fa-solid fa-list-check mr-2"></i> Ver las 6 Propuestas
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Candidatos (Fotos) -->
+    <section id="candidatos" class="py-16 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold text-teal-700 uppercase tracking-widest bg-teal-50 px-3 py-1 rounded-full border border-teal-200">Nuestra Fórmula</span>
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Candidatos a la Representación</h2>
+            <p class="text-slate-600 text-sm mt-1">Ingeniería Química y Ambiental</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Tarjeta Santiago (Principal) -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200 hover:shadow-md transition relative overflow-hidden group">
+                <div class="absolute top-0 right-0 bg-teal-700 text-white text-xs font-bold px-4 py-1.5 rounded-bl-2xl uppercase tracking-wider">
+                    Candidato Principal
+                </div>
+                
+                <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
+                    <div class="relative w-32 h-32 sm:w-36 sm:h-36 rounded-2xl overflow-hidden bg-slate-100 border-2 border-teal-600 shadow-inner flex-shrink-0 group-hover:scale-105 transition duration-300">
+                        <img src="santiago.jpg" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Santiago+Sanabria&background=0f766e&color=fff&size=200';" alt="Santiago Sanabria Rondón" class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="text-center sm:text-left">
+                        <h3 class="text-xl font-bold text-slate-900">Santiago Sanabria Rondón</h3>
+                        <p class="text-xs font-semibold text-teal-700 mb-3">Carrera: Ingeniería Química</p>
+                        
+                        <div class="flex flex-wrap gap-2 justify-center sm:justify-start mb-4">
+                            <span class="text-[11px] bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-medium"><i class="fa-solid fa-graduation-cap text-teal-700 mr-1"></i> Liderazgo </span>
+                            <span class="text-[11px] bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-medium"><i class="fa-solid fa-users text-teal-700 mr-1"></i> Presencia Permanente</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Comprometido con liderar una representación activa, con articulación directa ante el departamento y con disposición para resolver las problemáticas estudiantiles de manera oportuna.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta Emilio (Suplente) -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200 hover:shadow-md transition relative overflow-hidden group">
+                <div class="absolute top-0 right-0 bg-slate-800 text-white text-xs font-bold px-4 py-1.5 rounded-bl-2xl uppercase tracking-wider">
+                    Candidato Suplente
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
+                    <div class="relative w-32 h-32 sm:w-36 sm:h-36 rounded-2xl overflow-hidden bg-slate-100 border-2 border-slate-700 shadow-inner flex-shrink-0 group-hover:scale-105 transition duration-300">
+                        <img src="emilio.jpg" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Emilio+Vence&background=334155&color=fff&size=200';" alt="Emilio José Vence García" class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="text-center sm:text-left">
+                        <h3 class="text-xl font-bold text-slate-900">Emilio José Vence García</h3>
+                        <p class="text-xs font-semibold text-slate-600 mb-3">Carrera: Ingeniería Química</p>
+                        
+                        <div class="flex flex-wrap gap-2 justify-center sm:justify-start mb-4">
+                            <span class="text-[11px] bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-medium"><i class="fa-solid fa-plane-arrival text-slate-700 mr-1"></i> Estudiante Foráneo</span>
+                            <span class="text-[11px] bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-medium"><i class="fa-solid fa-handshake text-slate-700 mr-1"></i> Trabajo en Equipo</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Aporta la visión y vivencia de los estudiantes foráneos, garantizando una representación diversa que integre las diferentes realidades de la comunidad universitaria.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Presentación del Equipo (Texto fiel al documento original) -->
+    <section id="presentacion" class="py-12 px-4 bg-slate-100/70 border-y border-slate-200">
+        <div class="max-w-5xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xl">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">Presentación del Equipo</h2>
+                    <p class="text-xs text-teal-700 font-semibold">Enfoque de trabajo y visión colectiva</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
+                <p>
+                    Presentamos esta candidatura como fórmula para la <strong>Representación Estudiantil de Ingeniería Química</strong> ante el Comité Asesor del Programa Curricular con la convicción de que la representación no se lleva a cabo con un trabajo individual, sino con un verdadero <strong>trabajo en equipo</strong>.
+                </p>
+                <p>
+                    Como estudiantes que hemos recorrido los primeros semestres de la carrera, superando muchas de las materias de fundamentación, entendemos de primera mano las dificultades académicas, administrativas y de bienestar que enfrenta cotidianamente la comunidad estudiantil.
+                </p>
+                <p>
+                    Asumimos este reto como una <strong>fórmula complementaria</strong> que permite integrar y visibilizar tanto las perspectivas de los estudiantes bogotanos como las de los estudiantes foráneos. De esta manera, garantizamos una representación con presencia permanente, un canal de comunicación fluido con el departamento y respuestas oportunas a las problemáticas reales.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LAS 6 PROPUESTAS DE TRABAJO (Redacción exacta del documento) -->
+    <section id="propuestas" class="py-16 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="text-xs font-bold text-teal-700 uppercase tracking-widest bg-teal-50 px-3 py-1 rounded-full border border-teal-200">Programa de Trabajo</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">Nuestras 6 Propuestas</h2>
+            <p class="text-slate-600 text-sm mt-2 max-w-2xl mx-auto">Propuestas realistas redactadas directamente en nuestro programa oficial.</p>
+        </div>
+
+        <!-- Botones para Filtrar Categorías -->
+        <div class="flex flex-wrap justify-center gap-2 mb-10 text-xs font-bold">
+            <button @click="activeTab = 'todas'" :class="activeTab === 'todas' ? 'bg-teal-700 text-white shadow' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'" class="px-4 py-2.5 rounded-xl transition">Todas las propuestas (6)</button>
+            <button @click="activeTab = 'academico'" :class="activeTab === 'academico' ? 'bg-teal-700 text-white shadow' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'" class="px-4 py-2.5 rounded-xl transition">Academia y Cupos</button>
+            <button @click="activeTab = 'bienestar'" :class="activeTab === 'bienestar' ? 'bg-teal-700 text-white shadow' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'" class="px-4 py-2.5 rounded-xl transition">Salud Mental</button>
+            <button @click="activeTab = 'gestion'" :class="activeTab === 'gestion' ? 'bg-teal-700 text-white shadow' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'" class="px-4 py-2.5 rounded-xl transition">Gestión e Investigación</button>
+        </div>
+
+        <!-- Grid con las 6 Tarjetas Completas con la redacción del documento -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Propuesta 1 -->
+            <div x-show="activeTab === 'todas' || activeTab === 'academico'" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 font-black flex items-center justify-center text-lg">01</span>
+                        <span class="text-[10px] font-extrabold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full uppercase">Académico</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Gestión anticipada y realista de los cupos y sobrecupos</h3>
+                    <p class="text-xs font-bold text-teal-700 mb-4 uppercase">Objetivo: Reducir el retraso de acción frente a la falta de cupos en las materias disciplinarias de la carrera.</p>
+                    <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Establecer un mecanismo para medir la intención de inscripción antes de finalizar cada semestre, para así contar con suficiente tiempo a la hora de consolidar cifras reales para presentar ante el comité asesor de carrera y la facultad, proyectando así la demanda para gestionar el tiempo de la contratación docente y la apertura de nuevos grupos.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Establecer un acompañamiento directo durante las semanas de adiciones y cancelaciones, velando por que los sobrecupos sean asignados por criterios definidos y que estos sean conocidos por la comunidad.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Propuesta 2 -->
+            <div x-show="activeTab === 'todas' || activeTab === 'academico'" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 font-black flex items-center justify-center text-lg">02</span>
+                        <span class="text-[10px] font-extrabold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full uppercase">Electivas</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Creación conjunta de nuevas electivas</h3>
+                    <p class="text-xs font-bold text-teal-700 mb-4 uppercase">Objetivo: Diversificar la oferta de electivas con asignaturas de interés para los estudiantes de la carrera.</p>
+                    <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Realizar un censo de interés antes de finalizar cada semestre para identificar los temas con mayor demanda.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Articular la formulación del contenido de la temática más votada.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Radicar el proyecto ante el comité asesor del programa curricular para la aprobación e incorporación de la electiva el siguiente semestre.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Propuesta 3 -->
+            <div x-show="activeTab === 'todas' || activeTab === 'gestion'" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 font-black flex items-center justify-center text-lg">03</span>
+                        <span class="text-[10px] font-extrabold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full uppercase">Investigación</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Grupos de investigación</h3>
+                    <p class="text-xs font-bold text-teal-700 mb-4 uppercase">Objetivo: Hacer accesible la oferta de los grupos y semilleros de investigación que existen en la carrera para que cualquiera pueda vincularse.</p>
+                    <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Crear un directorio digital con actualización constante de los grupos de investigación y semilleros del departamento.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Detallar para cada grupo o semillero la línea de investigación, docente a cargo, proyectos vigentes, requisitos de ingreso y cupos para estos.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Organizar una feria de semilleros y grupos de investigación a inicio de cada semestre para que los estudiantes puedan conectar directamente.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Propuesta 4 -->
+            <div x-show="activeTab === 'todas' || activeTab === 'bienestar'" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 font-black flex items-center justify-center text-lg">04</span>
+                        <span class="text-[10px] font-extrabold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full uppercase">Salud Mental</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Salud mental</h3>
+                    <p class="text-xs font-bold text-teal-700 mb-4 uppercase">Objetivo: Establecer una ruta de acción clara y articulada con Bienestar para la prevención de la deserción, acompañamiento psicológico a tiempo y la protección del bienestar.</p>
+                    <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Crear la ruta IQ-Bienestar en el cual se tenga una comunicación directa para tener una canalización de los casos más rápida.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Difusión y orientación para el acceso paso a paso para solicitar citas de psicología y medicina a través de la plataforma del SIBU.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Informar los días y horarios en el que se habilita la publicación de citas.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Propuesta 5 -->
+            <div x-show="activeTab === 'todas' || activeTab === 'gestion'" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 font-black flex items-center justify-center text-lg">05</span>
+                        <span class="text-[10px] font-extrabold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full uppercase">Representación</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Representación garantizada</h3>
+                    <p class="text-xs font-bold text-teal-700 mb-4 uppercase">Objetivo: Garantizar que las posturas que lleve la representación ante coyunturas sean el reflejo de los pensamientos del estudiantado de IQ.</p>
+                    <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Implementar mecanismos de consulta y votación digital rápida y verificable, como Participa, para la toma de decisiones importantes frente a coyunturas o asambleas.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Llevar la postura mayoritaria de los estudiantes de IQ a los espacios de debate.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Propuesta 6 -->
+            <div x-show="activeTab === 'todas' || activeTab === 'gestion'" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 font-black flex items-center justify-center text-lg">06</span>
+                        <span class="text-[10px] font-extrabold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full uppercase">Administración</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Información sobre procesos administrativos y roles</h3>
+                    <p class="text-xs font-bold text-teal-700 mb-4 uppercase">Objetivo: Facilitar la interacción de los estudiantes con la estructura administrativa de la carrera y el manejo de trámites.</p>
+                    <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Publicar una guía que desglose las funciones de cada instancia del departamento y a quién acudir según la necesidad.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-teal-600 mt-0.5 mr-2 flex-shrink-0"></i><span>Explicar, por medio de infografías, las rutas paso a paso para diferentes procesos como cancelación o inscripción de materias de forma extemporánea, reserva de cupo, homologaciones y movilidad académica.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Muestrarios / Módulos Interactivos Simulados -->
+    <section id="herramientas" class="py-16 px-4 bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold text-teal-400 uppercase tracking-widest bg-teal-950 px-3 py-1 rounded-full border border-teal-800">Innovación en la gestión</span>
+                <h2 class="text-3xl font-extrabold mt-2">Así se verán nuestras iniciativas en marcha</h2>
+                <p class="text-slate-400 text-sm mt-1">Prototipo en vivo de las herramientas propuestas en la campaña</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Demo 1: Directorio Interactivo de Investigación -->
+                <div class="bg-slate-800/90 rounded-2xl p-6 border border-slate-700" x-data="{ search: '' }">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="font-bold text-base text-teal-300"><i class="fa-solid fa-magnifying-glass mr-2"></i> Simulador: Directorio de Semilleros</h4>
+                        <span class="text-[10px] bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded font-mono">PROPUESTA #3</span>
+                    </div>
+                    <input type="text" x-model="search" placeholder="Buscar por tema (ej: Polímeros, Catálisis...)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-teal-500 mb-4">
+
+                    <div class="space-y-2 text-xs">
+                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800" x-show="'polimeros catálisis ambiental'.includes(search.toLowerCase()) || search === ''">
+                            <div class="flex justify-between font-bold text-white">
+                                <span>Grupo de Procesos Químicos y Ambientales</span>
+                                <span class="text-teal-400">3 Cupos</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400 mt-1">Línea: Valorización de residuos y tratamiento de agua.</p>
+                        </div>
+                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800" x-show="'materiales biotecnología termodinámica'.includes(search.toLowerCase()) || search === ''">
+                            <div class="flex justify-between font-bold text-white">
+                                <span>Semillero de Biotecnología e Ingeniería de Reacciones</span>
+                                <span class="text-teal-400">2 Cupos</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400 mt-1">Línea: Biocombustibles y simulación de procesos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demo 2: Cronograma Semestral de Trabajo -->
+                <div class="bg-slate-800/90 rounded-2xl p-6 border border-slate-700">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="font-bold text-base text-teal-300"><i class="fa-solid fa-calendar-days mr-2"></i> Cronograma de Gestión por Semestre</h4>
+                        <span class="text-[10px] bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded font-mono">SEGUIMIENTO</span>
+                    </div>
+
+                    <div class="space-y-4 text-xs">
+                        <div class="flex space-x-3 items-start">
+                            <div class="w-6 h-6 rounded-full bg-teal-500 text-slate-950 font-bold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">1</div>
+                            <div>
+                                <h5 class="font-bold text-white">Inicio de Semestre</h5>
+                                <p class="text-slate-400 text-[11px]">Feria de Semilleros y Acompañamiento en Adiciones/Cancelaciones.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3 items-start">
+                            <div class="w-6 h-6 rounded-full bg-teal-500 text-slate-950 font-bold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">2</div>
+                            <div>
+                                <h5 class="font-bold text-white">Mitad de Semestre</h5>
+                                <p class="text-slate-400 text-[11px]">Activación Ruta Salud Mental IQ-Bienestar y publicación de guías de trámites.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3 items-start">
+                            <div class="w-6 h-6 rounded-full bg-teal-500 text-slate-950 font-bold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">3</div>
+                            <div>
+                                <h5 class="font-bold text-white">Cierre de Semestre</h5>
+                                <p class="text-slate-400 text-[11px]">Censo de intención de cupos y consulta para creación de nuevas electivas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Buzón de Propuestas (Conector de Correo y Forzado de Letra Oscura) -->
+    <section id="contacto" class="py-16 px-4 max-w-4xl mx-auto">
+        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200 text-center">
+            <span class="text-xs font-bold text-teal-700 uppercase tracking-widest bg-teal-50 px-3 py-1 rounded-full border border-teal-200">Construcción Colectiva</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">¿Tienes alguna propuesta o inquietud?</h2>
+            <p class="text-slate-600 text-xs md:text-sm mt-1 mb-6">Queremos construir las iniciativas del comité escuchándote directamente.</p>
+
+            <!-- Cambia tu-correo@unal.edu.co por tu correo real -->
+            <form action="https://formsubmit.co/ssanabriaro@unal.edu.co" method="POST" class="space-y-4 max-w-xl mx-auto text-left">
+                <input type="hidden" name="_subject" value="¡Nueva propuesta desde la web de campaña IQ!">
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Tu Nombre o Seudónimo (Opcional)</label>
+                    <input type="text" name="Nombre" placeholder="Ej. Estudiante 4to semestre" required
+                           class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-xs font-medium focus:outline-none focus:border-teal-600 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Tu Comentario, Idea o Problemática</label>
+                    <textarea name="Mensaje" rows="3" required placeholder="Escribe aquí qué problemática quisieras que llevemos al comité..." 
+                              class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-xs font-medium focus:outline-none focus:border-teal-600 transition"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs py-3 rounded-xl shadow transition">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Enviar a los Candidatos
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="bg-slate-950 text-slate-400 py-10 px-4 text-center border-t border-slate-800 text-xs">
+        <div class="max-w-4xl mx-auto space-y-3">
+            <p class="font-bold text-white text-sm">Representación Estudiantil ante el Comité Asesor del Programa Curricular de Ingeniería Química y Ambiental</p>
+            <p class="text-slate-400">Candidato principal: Santiago Sanabria Rondón | Candidato suplente: Emilio José Vence García</p>
+            <p class="text-slate-600 text-[11px] pt-4 border-t border-slate-900">
+                Página web de campaña desarrollada para la comunidad estudiantil.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
